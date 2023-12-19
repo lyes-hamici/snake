@@ -305,7 +305,7 @@ def player_choice():
                     name_player += lettre
 
         afficher_texte("Entrer vôtre pseudo :",100,100)
-        afficher_texte("Caractère spéciaux , les chiffres et les majuscules ne sont pas autoriser.",100,50)
+        afficher_texte("Seul les lettres en minuscules sont autoriser.",100,50)
         display_word = get_font(10).render(' '.join(name_player), True, white)
         afficher_texte(f"{name_player}", 150 ,150, white) 
         
