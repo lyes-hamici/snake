@@ -1,4 +1,4 @@
-aba 0
-test 20
-abarax 380
-PixelPivert 40000
+zt abarax 380
+pixelpivert 40000
+zt myrturtle 150
+test fin 260

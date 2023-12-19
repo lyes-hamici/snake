@@ -5,6 +5,7 @@ from pygame.locals import *
 from random import *
 from button import Button
 import random
+import time
 
 
 pygame.init()
@@ -94,7 +95,7 @@ def game_over():
 	
 	screen.blit(game_over_surface, game_over_rect)
 	pygame.display.flip()
-	
+	time.sleep(1)
 	player_choice()
     
     
@@ -270,6 +271,7 @@ def main():
 
 
 def player_choice():
+    time.sleep(2)
     global player
     name_player = ""
     player_exists = False
@@ -299,14 +301,13 @@ def player_choice():
                     player = name_player
                     name_player = ""
                 else:
-                    
                     lettre = chr(event.key)
                     name_player += lettre
 
         afficher_texte("Entrer vôtre pseudo :",100,100)
-        afficher_texte("Caractère spéciaux et les chiffres ne sont pas autoriser.",100,50)
+        afficher_texte("Caractère spéciaux , les chiffres et les majuscules ne sont pas autoriser.",100,50)
         display_word = get_font(10).render(' '.join(name_player), True, white)
-        afficher_texte(f"{name_player}", 150 ,150, white)  # Affiche le mot en cours de formation
+        afficher_texte(f"{name_player}", 150 ,150, white) 
         
         pygame.display.update()
 
