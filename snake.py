@@ -83,7 +83,6 @@ def afficher_score(choice,color, font, size):
 
 
 def game_over():
-
 	my_font = pygame.font.SysFont("img/font.ttf", 50)
 	
 	game_over_surface = my_font.render(
@@ -96,7 +95,7 @@ def game_over():
 	screen.blit(game_over_surface, game_over_rect)
 	pygame.display.flip()
 	time.sleep(1)
-	player_choice()
+	main()
     
     
 	
@@ -166,15 +165,17 @@ def game():
             fruit_position[0], fruit_position[1], 10, 10))
 
         if snake_position[0] < 0 or snake_position[0] > WIDTH-10:
+            mixer.music.set_volume(0)
             game_over()
-            snake_position = [100, 50]
 
         if snake_position[1] < 0 or snake_position[1] > HEIGHT-10:
+            mixer.music.set_volume(0)
             game_over()
             
 
         for block in snake_body[1:]:
             if snake_position[0] == block[0] and snake_position[1] == block[1]:
+                mixer.music.set_volume(0)
                 game_over()
                 
 
@@ -269,7 +270,7 @@ def main():
 
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
 
-                    game()
+                    player_choice()
 
                 if SCORE_BUTTON.checkForInput(MENU_MOUSE_POS):
                     tableau_score()
@@ -285,7 +286,6 @@ def main():
 
 
 def player_choice():
-    time.sleep(2)
     global player
     name_player = ""
     player_exists = False
@@ -311,7 +311,7 @@ def player_choice():
                         if not player_exists:
                             fichier.write(name_player.lower()+ str(espace))
                             fichier.write(str(score) + '\n' )
-                            main()
+                            game()
                     player = name_player
                     name_player = ""
                 else:
