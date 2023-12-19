@@ -181,9 +181,9 @@ def tableau_score():
     with open("score.txt", "r") as fichier:
         lines = fichier.readlines()
         for i in range(len(lines)):  # Parcours tous les noms de joueurs
-            if i < len(lines):  # Vérification pour s'assurer qu'on peut accéder à l'indice suivant
+            if i < len(lines):  
                 player_name = lines[i].strip()
-                tableau_scores.append((player_name))  # Ajoute le nom et le score à la liste
+                tableau_scores.append((player_name))  
     
     while running:
         screen.blit(BG_VERT, (0,0))
