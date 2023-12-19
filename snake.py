@@ -102,7 +102,17 @@ def game_over():
 	
 
 def game():
-    global change_to , direction,fruit_position,fruit_spawn,score
+    global change_to , direction,fruit_position,fruit_spawn,score,snake_position,snake_body
+    musique= pygame.mixer.music.load("music\Push It To The Limit (scarface).mp3")
+    mixer.music.set_volume(0.1)
+    mixer.music.play(-1)
+    snake_position = [100, 50]
+    snake_body = [[100, 50],
+                [90, 50],
+                [80, 50],
+                [70, 50]
+                ]
+    score = 0
     while True:
 	
         for event in pygame.event.get():
@@ -157,12 +167,16 @@ def game():
 
         if snake_position[0] < 0 or snake_position[0] > WIDTH-10:
             game_over()
+            snake_position = [100, 50]
+
         if snake_position[1] < 0 or snake_position[1] > HEIGHT-10:
             game_over()
+            
 
         for block in snake_body[1:]:
             if snake_position[0] == block[0] and snake_position[1] == block[1]:
                 game_over()
+                
 
         afficher_score(1, white, "img/font.ttf", 20)
         
@@ -297,7 +311,7 @@ def player_choice():
                         if not player_exists:
                             fichier.write(name_player.lower()+ str(espace))
                             fichier.write(str(score) + '\n' )
-                            pygame.quit()
+                            main()
                     player = name_player
                     name_player = ""
                 else:
